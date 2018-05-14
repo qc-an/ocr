@@ -4,3 +4,16 @@
 <head>
     <script src="ocr.js"></script>
 </head>
+<body onload="ocrDemo.onloadFunction()">
+    <div id="main-container" style="text-align: center;">
+        <h1>OCR Demo</h1>
+        <canvas id="canvas" width="200" height="200"></canvas>
+        <form name="input">
+            <p>Digit: <input id="digit" type="text"></p>
+            <input type="button" value="train" onclick="ocrDemo.train()">
+            <input type="button" value="test"  oncilck="ocrDemo.test()">
+            <input type="button" value="reset" onclick="ocrDemo.resetCanvas();"/>
+        </form>
+    </div>
+</body>
+</html>
