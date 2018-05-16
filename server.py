@@ -44,7 +44,7 @@ class JSONHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                response_code = 500
         else:
             response_code = 400
-        
+
         self.send_response(response_code)
         self.send_header("Content-type", "application/json")
         self.send_header("Access-Control-Allow-Origin", "*")
@@ -56,7 +56,7 @@ class JSONHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 if __name__ == '__main__':
     server_class = BaseHTTPServer.HTTPServer;
     httpd = server_class((HOST_NAME, PORT_NUMBER), JSONHandler)
-    
+
 
     try:
        httpd.server_forever()
