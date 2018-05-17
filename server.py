@@ -12,7 +12,7 @@ HIDDEN_NODE_COUNT = 15
 
 
 data_matrix = np.loadtxt(open('data.csv', 'rb'),delimiter = ',')
-data_labels = np.loadtxt(open('dataLabels.csb', 'rb'))
+data_labels = np.loadtxt(open('dataLabels.csv', 'rb'))
 
 
 data_matrix = data_matrix.tolist()
@@ -38,7 +38,7 @@ class JSONHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             nn.save()
         elif payload.get('predict'):
             try:
-               print nn.predict(data_matrix[])
+               print nn.predict(data_matrix[0])
                response = {"type":"test", "result":str(nn.predict(payload['image']))}
             except:
                response_code = 500
@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
 
     try:
-       httpd.server_forever()
+       httpd.serve_forever()
     except KeyboardInterrupt:
         pass
     else:

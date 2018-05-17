@@ -14,7 +14,7 @@ def test(data_matrix, data_labels, test_indices, nn):
             correct_guess_count += 1 
     return correct_guess_count / float(len(test_indices))
 
-data_matrix = np.loadtxt(open('data.csv', 'rb'), delimiter = 'r').tolist()
+data_matrix = np.loadtxt(open('data.csv', 'rb'), delimiter = ',').tolist()
 data_labels = np.loadtxt(open('dataLabels.csv', 'rb')).tolist()
 
 #create training and testing sets:

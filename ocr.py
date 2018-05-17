@@ -25,11 +25,11 @@ class OCRNeuralNetwork:
         if(not os.path.isfile(OCRNeuralNetwork.NN_FILE_PATH) or not use_file):
             self.theta1 = self._rand_initialize_weights(400, num_hidden_nodes)
             self.theta2 = self._rand_initialize_weights(num_hidden_nodes, 10)
-            self.input_layer_bias = sef._rand_initialize_weights(1, num_hidden_nodes)
+            self.input_layer_bias = self._rand_initialize_weights(1, num_hidden_nodes)
             self.hidden_layer_bias = self._rand_initialize_weights(1, 10)
 
             TrainData = namedtuple('TrainData', ['y0', 'label'])
-            self.train([TrainData(self.data_matrix[i], int(selfdata_labels[i])) for i in training_indeces])
+            self.train([TrainData(self.data_matrix[i], int(self.data_labels[i])) for i in training_indeces])
             self.save()
         else:
             self._load()
@@ -68,7 +68,7 @@ class OCRNeuralNetwork:
         y1 = self.sigmoid(y1)
 
         y2 = np.dot(np.array(self.theta2),y1)
-        y2 = np.add(y2, self.hedden_layer_bias)
+        y2 = np.add(y2, self.hidden_layer_bias)
 
         results = y2.T.tolist()[0]
         return results.index(max(results))

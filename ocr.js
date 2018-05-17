@@ -7,7 +7,7 @@ var ocrDemo = {
     PORT: "9000",
     HOST: "http://localhost",
 
-    BLACK: "#000000"
+    BLACK: "#000000",
     BLUE: "#0000ff",
 
     trainArray: [],
@@ -19,7 +19,7 @@ var ocrDemo = {
     
     resetCanvas: function() {
         var canvas = document.getElementById('canvas');
-        car ctx = canvas.getContext('2d');
+        var ctx = canvas.getContext('2d');
         this.data = [];
         ctx.fillStyle = this.BLACK;
         ctx.fillRect(0,0, this.CANVAS_WIDTH, this.CANVAS_WIDTH);
@@ -115,7 +115,7 @@ var ocrDemo = {
              alert("the neural network predicts you wrote a \'"
                  + responseJSON.result + '\'');
          }
-     }
+     },
 
     onError: function(e) {
         alert("Error occurred while connecting to server: " + e.target.statusText);
@@ -123,7 +123,7 @@ var ocrDemo = {
 
     sendData: function(json){
         var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open('POST', this.HOST + ":" this.PORT, false);
+        xmlHttp.open('POST', this.HOST + ":" + this.PORT, false);
         xmlHttp.onload = function() { this.receiveResponse(xmlHttp);}.bind(this);
         xmlHttp.onerror = function() {this.onError(xmlHttp)}.bind(this);
         var msg =JSON.stringify(json);
